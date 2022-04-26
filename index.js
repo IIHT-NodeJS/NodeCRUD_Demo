@@ -20,9 +20,10 @@ mysqlConnection.connect((err) => {
 
 app.listen(3000, () => console.log("Express server is running at port 3000"));
 
-app.get("/employees", (res, req) => { // get req , in terms of crud the R that stands of read
+//retirved employees from the database
+app.get("/employees", (req, res ) => { // get req , in terms of crud the R that stands of read
   mysqlConnection.query("SELECT * fROM Employee", (err, rows, feilds) => {
-    if (!err) console.log(rows);
+    if (!err) res.send(rows);
     else console.log(err);
   });
 });
