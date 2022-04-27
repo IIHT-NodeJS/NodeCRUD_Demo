@@ -36,3 +36,12 @@ app.get("/employee/:id", (req, res ) => {
     else console.log(err);
   });
 });
+
+// delete employee with regards to the id 
+// localhost:3000/deleteemployee/2 => this will delete the employee with the id of 2 
+app.delete("/employee/:id", (req, res ) => { 
+  mysqlConnection.query("DELETE fROM Employee WHERE EmpID =? ",[req.params.id], (err, rows, feilds) => {
+    if (!err) res.send("SUCESSFULLY DELETED EMPLOYEE!");
+    else console.log(err);
+  });
+});
