@@ -27,3 +27,12 @@ app.get("/employees", (req, res ) => { // get req , in terms of crud the R that 
     else console.log(err);
   });
 });
+
+// get sepcific employee using the id 
+// localhost:3000/employee/2 => the details of empoloyee with the id 2
+app.get("/employee/:id", (req, res ) => { 
+  mysqlConnection.query("SELECT * fROM Employee WHERE EmpID =? ",[req.params.id], (err, rows, feilds) => {
+    if (!err) res.send(rows);
+    else console.log(err);
+  });
+});
